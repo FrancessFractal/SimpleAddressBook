@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Entry;
 use Illuminate\Http\Request;
 
 class EntryController extends Controller
@@ -13,8 +14,8 @@ class EntryController extends Controller
      */
     public function index()
     {
-        // TODO: implement index()
-        return "index placeholder";
+        return view('entries.index')
+            ->with('entries', Entry::all());
     }
 
     /**
@@ -46,10 +47,10 @@ class EntryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Entry $entry)
     {
         // TODO: implement show()
-        return "show entry $id placeholder";
+        return "show entry $entry->id placeholder";
     }
 
     /**
@@ -58,10 +59,10 @@ class EntryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Entry $entry)
     {
         // TODO: implement edit()
-        return "edit entry $id placeholder";
+        return "edit entry $entry->id placeholder";
     }
 
     /**
@@ -71,10 +72,10 @@ class EntryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Entry $entry)
     {
         // TODO: implement update()
-        return "update entry $id placeholder";
+        return "update entry $entry placeholder";
     }
 
     /**
@@ -83,9 +84,9 @@ class EntryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Entry $entry)
     {
         // TODO: implement destroy()
-        return "destroy entry $id placeholder";
+        return "destroy entry $entry->id placeholder";
     }
 }
