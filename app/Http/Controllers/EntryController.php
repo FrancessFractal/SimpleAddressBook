@@ -49,8 +49,8 @@ class EntryController extends Controller
      */
     public function show(Entry $entry)
     {
-        // TODO: implement show()
-        return "show entry $entry->id placeholder";
+        return view('entries.show')
+            ->with('entry', $entry);
     }
 
     /**
