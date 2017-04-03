@@ -26,8 +26,7 @@ class EntryController extends Controller
      */
     public function create()
     {
-        // TODO: implement create()
-        return "create entry placeholder";
+        return view('entries.new');
     }
 
     /**
@@ -36,10 +35,13 @@ class EntryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UpdateEntry $request)
     {
-        // TODO: implement store()
-        return "store entry placeholder";
+        // create the new entry
+        $entry = Entry::create(['name' => $request->name, 'email' => $request->email, 'phone' => $request->phone]);
+
+        // redirect to show the newly created entry
+        return redirect(route('entry.show', ['entry' => $entry->id]));
     }
 
     /**

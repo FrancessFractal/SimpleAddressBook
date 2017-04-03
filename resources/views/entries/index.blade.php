@@ -12,4 +12,6 @@
         @endforeach
     </ul>
 
+    <a href="{{ route('entry.create') }}" >Create New Entry</a>
+
 @endsection
