@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Entry;
+use App\Http\Requests\UpdateEntry;
 use Illuminate\Http\Request;
 
 class EntryController extends Controller
@@ -72,10 +73,14 @@ class EntryController extends Controller
      * @param  Entry $entry
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Entry $entry)
+    public function update(UpdateEntry $request, Entry $entry)
     {
-        // TODO: implement update()
-        return "update entry $entry placeholder";
+        // update entry
+        $entry->fill(['name' => $request->name, 'email' => $request->email, 'phone' => $request->phone]);
+        $entry->save();
+
+        // redirect to display modified entry
+        return redirect(route('entry.show', ['entry' => $entry->id]));
     }
 
     /**
