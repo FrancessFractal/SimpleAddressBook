@@ -30,8 +30,8 @@ class UpdateEntry extends FormRequest
             'name' => 'required|max:255',
 
             // validate email and phone number, making sure they're the right type and will fit in db
-            'email' => 'email|max:255',
-            'phone' => 'phone|max:255'
+            'email' => 'nullable|email|max:255',
+            'phone' => 'nullable|phone|max:255'
         ];
     }
 }
