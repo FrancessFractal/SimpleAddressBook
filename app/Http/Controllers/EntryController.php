@@ -44,7 +44,7 @@ class EntryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  Entry $entry
      * @return \Illuminate\Http\Response
      */
     public function show(Entry $entry)
@@ -56,20 +56,20 @@ class EntryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  Entry $entry
      * @return \Illuminate\Http\Response
      */
     public function edit(Entry $entry)
     {
-        // TODO: implement edit()
-        return "edit entry $entry->id placeholder";
+        return view('entries.edit')
+            ->with('entry', $entry);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  Entry $entry
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Entry $entry)
@@ -81,7 +81,7 @@ class EntryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  Entry $entry
      * @return \Illuminate\Http\Response
      */
     public function destroy(Entry $entry)
