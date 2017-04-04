@@ -93,7 +93,11 @@ class EntryController extends Controller
      */
     public function destroy(Entry $entry)
     {
-        // TODO: implement destroy()
-        return "destroy entry $entry->id placeholder";
+
+        // delete entry
+        $entry->delete();
+
+        // redirect to the entry index page
+        return redirect(route('entry.index'));
     }
 }
