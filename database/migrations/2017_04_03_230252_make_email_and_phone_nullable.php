@@ -34,7 +34,8 @@ class MakeEmailAndPhoneNullable extends Migration
      */
     public function down()
     {
-        //
+        DB::statement('UPDATE `entries` SET `email`="" WHERE `email` IS NULL');
+        DB::statement('UPDATE `entries` SET `phone`="" WHERE `phone` IS NULL');
         DB::statement('ALTER TABLE `entries` MODIFY `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL;');
         DB::statement('ALTER TABLE `entries` MODIFY `phone` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL;');
 

@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use App\Entry;
+use App\Address;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -23,7 +25,13 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Route::bind('entry', function($value, $route) {
+            return Entry::where('id', '=', $value)->firstOrFail();
+        });
+
+        Route::bind('address', function($value, $route) {
+            return Address::where('id', '=', $value)->firstOrFail();
+        });
 
         parent::boot();
     }
