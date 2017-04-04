@@ -10,6 +10,8 @@
 </head>
 <body>
 
+    {{ session('status') }} <br />
+
     <a href="{{ route('entry.index') }}" >Home</a>
 
     <div class="content">

@@ -42,6 +42,8 @@ class AddressController extends Controller
             'country' => $request->country,
         ]);
 
+        $request->session()->flash('status', 'New address created!');
+
         // redirect to show the address book entry containing the new address
         return redirect(route('entry.show', ['entry' => $entry->id]));
     }
@@ -78,6 +80,8 @@ class AddressController extends Controller
         ]);
         $address->save();
 
+        $request->session()->flash('status', 'Address updated!');
+
         // redirect to display display the entry this address belongs to
         return redirect(route('entry.show', ['entry' => $address->entry]));
     }
@@ -85,14 +89,17 @@ class AddressController extends Controller
     /**
      * Remove the specified address from storage.
      *
+     * @param \Illuminate\Http\Request $request
      * @param  \App\Address $address
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Address $address)
+    public function destroy(Request $request, Address $address)
     {
 
         // delete address
         $address->delete();
+
+        $request->session()->flash('status', 'Address deleted!');
 
         // redirect to display display the entry this address belongs to
         return redirect(route('entry.show', ['entry' => $address->entry]));
